@@ -1,7 +1,19 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
 
-<polymer-element name="my-element" noscript>
+<polymer-element name="my-element" attributes="owner" noscript>
   <template>
-    <span>Hello from <b>my-element</b>. This is my Shadow DOM.</span>
+      <span>Hello from <b>my-element</b>. This is my Shadow DOM.</span>
+      <core-ajax url="http://ip.jsontest.com" auto response="{{resp}}"></core-ajax>
+      <br/><textarea value="{{resp}}"></textarea>
+      <p>This is <b>{{owner}}</b>'s name-tag element.</p>
   </template>
+  <script>
+    Polymer('my-element', {
+        owner: 'Alvaro',
+        ready: function() {
+            //this.$.el.textContent = this.owner + ' is ready!';
+        }
+    });
+  </script>
 </polymer-element>
